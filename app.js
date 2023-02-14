@@ -4,18 +4,17 @@ const pointer = document.getElementsByClassName("pointer")[0];
 const cardBorder = document.getElementsByClassName("cardBorder")[0];
 const ParentCrad = document.getElementsByClassName("cards")[0];
 
-const glowEffect = (e) => {
-  const rect = e.target.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
 
-  e.target.style.setProperty("--mouse-x", `${x}px`);
-  e.target.style.setProperty("--mouse-y", `${y}px`);
-};
+ParentCrad.addEventListener("mousemove", (e) => {
+  for (const card of cards) {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
 
-for (const card of cards) {
-  card.addEventListener("mousemove", glowEffect);
-}
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  }
+});
 
 body.addEventListener("mousemove", (e) => {
   const rect = e.target.getBoundingClientRect();
