@@ -1,0 +1,135 @@
+:root{
+    --bg-color: rgb(20, 20, 20);
+}
+
+body{
+    background-color: var(--bg-color);
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: none;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    cursor: none;
+}
+
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 922px;
+    width: calc(100% - 20px);
+    cursor: none;
+}
+
+.card{
+    height: 260px;
+    width: 300px;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: rgba(225, 225, 225, 0.1);
+    position: relative;
+    cursor: none;
+}
+
+
+.card::before, 
+.cardBorder{
+    height: 100%;
+    width: 100%;
+    content: "";
+    position: absolute;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 0.7s;
+    cursor: none;
+}
+
+.card::before{
+    background:radial-gradient(
+        800px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.06),
+        transparent 40%
+    );
+    z-index: 3;
+}
+
+.cardBorder{
+    background:radial-gradient(
+        400px circle at var(--mouse-x) var(--mouse-y),
+        rgba(255, 255, 255, 0.3),
+        transparent 40%
+    );
+    z-index: 1;
+    height: 260px;
+    width: 300px;
+}
+
+.card:hover::before,.card:hover .cardBorder{
+    opacity: 1;
+}
+
+
+
+.cardContent{
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: none;
+    background-color: rgb(23, 23, 23);
+    margin: 1px;
+    z-index: 2;
+    border-radius: inherit;
+    position: relative;
+}
+
+
+.pointer {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(#00FF00, #00FF00, #00FF00);
+    animation: animate 1s linear infinite;
+    z-index: 100;
+  }
+  
+  @keyframes animate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .pointer span {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: linear-gradient(#00b2ff, #00ffbb, #6bff6b);
+  }
+  
+  .pointer span:nth-child(1) {
+    filter: blur(5px);
+  }
+  
+  .pointer span:nth-child(2) {
+    filter: blur(10px);
+  }
+  
+  
